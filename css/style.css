@@ -1,0 +1,167 @@
+/* Основні стилі */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff5f5;
+    color: #333;
+    overflow-x: hidden;
+}
+
+header.banner {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-in;
+}
+
+header.banner h1 {
+    font-size: 2.5em;
+    color: #d62828;
+    margin: 0;
+}
+
+header.banner p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Сніг */
+.snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('snowflake.png') repeat;
+    opacity: 0.1;
+    z-index: -1;
+    animation: snowFall 10s linear infinite;
+}
+
+/* Смаколики */
+.treats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.treat {
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: float 4s ease-in-out infinite;
+}
+
+.treat:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.treat img {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Спливаючі вікна */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 400px;
+    display: none;
+    z-index: 10;
+    animation: modalAppear 0.5s forwards;
+}
+
+.modal:target {
+    display: block;
+}
+
+.modal h2 {
+    font-size: 1.8em;
+    margin: 0 0 10px;
+    color: #d62828;
+}
+
+.modal p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.modal .close {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    font-size: 1em;
+    text-decoration: none;
+    color: #d62828;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.modal .close:hover {
+    color: #333;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .treats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .treat img {
+        width: 80px;
+        margin-bottom: 20px;
+    }
+}
+
+/* Анімації */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes snowFall {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 100%;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
